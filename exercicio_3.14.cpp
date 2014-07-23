@@ -19,7 +19,7 @@ struct Matrix {
     }
 };
 
-struct Jacobi {
+struct GaussSeidel {
     int n;
     double er;
     double X[MAX], X0[MAX];
@@ -35,11 +35,13 @@ struct Jacobi {
         double d = 0, dd = 0;
         for(int i=0; i<n; i++) {
             double sum = 0;
-            for(int j=0; j<n; j++)
-                if (j!=i)
-                    sum+=a.V[i][j]*X0[j];
+            for(int j=0; j<i; j++)
+                sum+=a.V[i][j]*X[j];
 
-            X[i] = (a.V[i][n]-sum)/a.V[i][i];
+            for(int j=i+1; j<n; j++)
+                sum+=a.V[i][j]*X0[j];
+
+            X[i] = -1/a.V[i][i]*(sum-a.V[i][n]);
 
             d = max(d, abs(X[i]-X0[i]));
             dd = max(dd, abs(X[i]));
@@ -67,10 +69,10 @@ struct Jacobi {
 
 int main() {
     Matrix A;
-    Jacobi J;
+    GaussSeidel G;
     
     while(A.read()) {
-        J.solve(A, 1e-3, 20);
+        G.solve(A, 1e-3, 20);
 
         cout << "---" << endl;
     }
