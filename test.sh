@@ -8,7 +8,7 @@ if [ $# -lt 1 ]; then
 
         BASE=$(basename $f .cpp)
         echo -n "$BASE... "
-        if g++ $f && ./a.out < $BASE.in | diff -bZB - $BASE.out > /dev/null 
+        if g++ $f && ./a.out < $BASE.in | diff - $BASE.out > /dev/null 
 		then
         	echo OK
         	((++success))
@@ -23,6 +23,6 @@ fi
 
 g++ exercicio_$1.cpp && ./a.out < exercicio_$1.in
 
-./a.out < exercicio_$1.in | diff -bZB - exercicio_$1.out && echo "OK" || echo "FAILED"
+./a.out < exercicio_$1.in | diff - exercicio_$1.out && echo "OK" || echo "FAILED"
 
 
