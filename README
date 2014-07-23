@@ -1,0 +1,19 @@
+Para testar todos os casos:
+
+	./test.sh
+
+Para testar um programa em específico (e.g. 3.12):
+
+	./test.sh 3.12
+
+Se preferir fazer manualmente, para compilar:
+
+	g++ arquivo.cpp
+
+Para executar com caso de teste:
+
+	./a.out < data/arquivo.in
+
+Para verificar se o programa está correto usando os casos de teste:
+
+	./a.out < data/arquivo.in | diff - data/arquivo.out
