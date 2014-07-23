@@ -12,7 +12,7 @@ Se preferir fazer manualmente, para compilar:
 
 Todos os casos de teste encontram-se na pasta "data". O esperado é executar o
 programa utilizando o arquivo de entrada (.in) e ele gerar uma saída
-exatamente igual ao arquivo de saída.
+exatamente igual ao arquivo de saída (.out).
 
 Para executar com caso de teste:
 
