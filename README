@@ -10,6 +10,10 @@ Se preferir fazer manualmente, para compilar:
 
 	g++ arquivo.cpp
 
+Todos os casos de teste encontram-se na pasta "data". O esperado é executar o
+programa utilizando o arquivo de entrada (.in) e ele gerar uma saída
+exatamente igual ao arquivo de saída.
+
 Para executar com caso de teste:
 
 	./a.out < data/arquivo.in
@@ -17,3 +21,9 @@ Para executar com caso de teste:
 Para verificar se o programa está correto usando os casos de teste:
 
 	./a.out < data/arquivo.in | diff - data/arquivo.out
+
+Caminho completo da compilação e teste (usando exercício 1.1 como exemplo):
+
+	g++ exercicio_1.1.cpp && ./a.out < data/exercicio_1.1.in | diff - data/exercicio_1.1.out
+
+Espera-se que o resultado seja vazio (nenhuma diferença encontrada).
