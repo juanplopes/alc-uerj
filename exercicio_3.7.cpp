@@ -21,30 +21,40 @@ struct Matrix {
     void write() {
         for(int i=0; i<m; i++) {
             for(int j=0; j<n; j++)
-                cout << setprecision(3) << fixed << (j>0 ? " " : "") << V[i][j];
+                cout << setprecision(4) << fixed << (j>0 ? " " : "") << V[i][j];
             cout <<  endl;
         }
     }
 
-    void swap_lines(int a, int b) {
-        for(int j=0; j<n; j++)
-            swap(V[a][j], V[b][j]);
-    }
-
-    void solve() {
-        for(int k=0; k<m-1; k++) {
-            int best = k;
-            for(int i=k+1; i<m; i++)
-                if (abs(V[i][k]) > abs(V[best][k]))
-                    best = i;
-            swap_lines(best, k);
-
+    void decompose_LU(Matrix& b) {
+        b.m = m;
+        b.n = n;
+        for(int k=0; k<m; k++) {
+            b.V[k][k] = 1;
             for(int i=k+1; i<m; i++) {
                 double pivot = V[i][k] / V[k][k];
-                for(int j=k; j<n; j++)
+                b.V[i][k] = pivot;                
+                for(int j=k; j<m; j++)
                     V[i][j] -= pivot*V[k][j];
             }
         }
+    }
+
+    void copy_last_column_from(Matrix& b) {
+        for(int i=0; i<m; i++) 
+            V[i][n-1] = b.V[i][n-1];
+    }
+
+    void solve_L() {
+        for(int i=0; i<m; i++) {
+            for(int j=0; j<i; j++) {
+                V[i][n-1] -= V[i][j]*V[j][n-1];
+                V[i][j] = 0;
+            }
+        }
+    }
+
+    void solve_U() {
         for(int i=m-1; i>=0; i--) {
             double pivot = V[i][i];
             if (abs(pivot) < 1e-6) break;
@@ -60,13 +70,29 @@ struct Matrix {
     }
 };
 
-
 int main() {
-    Matrix a;
+    Matrix U, L;
     
-    while(a.read()) {
-        a.solve();
-        a.write();
+    while(U.read()) {
+        U.decompose_LU(L);
+        L.copy_last_column_from(U);
+
+        cout << "LY = B:" << endl;
+        L.write();
+
+        L.solve_L();
+        cout << "solved Y:" << endl;
+        L.write();
+
+        U.copy_last_column_from(L);
+
+        cout << "UX = Y:" << endl;
+        U.write();
+
+        U.solve_U();
+        cout << "solved X:" << endl;
+        U.write();
+
         cout << "---" << endl;
     }
 }

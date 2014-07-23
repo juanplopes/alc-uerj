@@ -1,21 +1,28 @@
 #!/bin/bash
 
 if [ $# -lt 1 ]; then
-    EXERCICIOS=(
-        1.1 1.2 1.3
-        3.3 3.4
-    )
-    for i in "${EXERCICIOS[@]}"
+    success=0
+    failed=0
+    for f in *.cpp
     do
-        echo Exercício $i... 
-        g++ exercicio_$i.cpp && ./a.out < exercicio_$i.in | diff -bZB - exercicio_$i.out
+
+        BASE=$(basename $f .cpp)
+        echo -n "$BASE... "
+        if g++ $f && ./a.out < $BASE.in | diff -bZB - $BASE.out > /dev/null 
+		then
+        	echo OK
+        	((++success))
+		else
+			echo FAILED
+			((++failed))
+		fi
     done
-    exit 0
+    echo "PASSED: $success; FAILED: $failed."
+    exit $failed
 fi
 
 g++ exercicio_$1.cpp && ./a.out < exercicio_$1.in
 
-./a.out < exercicio_$1.in | diff -bZB - exercicio_$1.out && echo "   OK" || echo "   FAILED"
-
+./a.out < exercicio_$1.in | diff -bZB - exercicio_$1.out && echo "OK" || echo "FAILED"
 
 
