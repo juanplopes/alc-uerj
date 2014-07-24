@@ -104,7 +104,7 @@ int main() {
 
         L.copy_last_column_from(U);
 
-        cout << "LY = B:" << endl;
+        cout << "LY = PB:" << endl;
         L.write();
 
         L.solve_L();
