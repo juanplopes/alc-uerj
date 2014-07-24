@@ -1,0 +1,66 @@
+Iteration #1. Epsilon=0.900000
+Eigenvalue: 10.000000
+Eigenvector:
+1.000000 0.800000 0.100000
+
+Iteration #2. Epsilon=0.211111
+Eigenvalue: 7.200000
+Eigenvector:
+1.000000 0.750000 -0.111111
+
+Iteration #3. Epsilon=0.076923
+Eigenvalue: 6.500000
+Eigenvector:
+1.000000 0.730769 -0.188034
+
+Iteration #4. Epsilon=0.032816
+Eigenvalue: 6.230769
+Eigenvector:
+1.000000 0.722222 -0.220850
+
+Iteration #5. Epsilon=0.015064
+Eigenvalue: 6.111111
+Eigenvector:
+1.000000 0.718182 -0.235915
+
+Iteration #6. Epsilon=0.007180
+Eigenvalue: 6.054545
+Eigenvector:
+1.000000 0.716216 -0.243095
+
+Iteration #7. Epsilon=0.003493
+Eigenvalue: 6.027027
+Eigenvector:
+1.000000 0.715247 -0.246588
+
+Iteration #8. Epsilon=0.001718
+Eigenvalue: 6.013453
+Eigenvector:
+1.000000 0.714765 -0.248306
+
+Iteration #9. Epsilon=0.000851
+Eigenvalue: 6.006711
+Eigenvector:
+1.000000 0.714525 -0.249157
+
+Iteration #10. Epsilon=0.000423
+Eigenvalue: 6.003352
+Eigenvector:
+1.000000 0.714405 -0.249579
+
+Iteration #11. Epsilon=0.000211
+Eigenvalue: 6.001675
+Eigenvector:
+1.000000 0.714346 -0.249790
+
+Iteration #12. Epsilon=0.000105
+Eigenvalue: 6.000837
+Eigenvector:
+1.000000 0.714316 -0.249895
+
+Iteration #13. Epsilon=0.000052
+Eigenvalue: 6.000419
+Eigenvector:
+1.000000 0.714316 -0.249895
+
+---
