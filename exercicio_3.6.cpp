@@ -21,8 +21,8 @@ struct Matrix {
     void write() {
         for(int i=0; i<m; i++) {
             for(int j=0; j<n; j++)
-                cout << setprecision(4) << fixed << (j>0 ? " " : "") << V[i][j];
-            cout <<  endl;
+                cout << setprecision(4) << fixed << (j>0 ? " & " : "") << V[i][j];
+            cout <<  "\\\\" << endl;
         }
     }
 
@@ -33,9 +33,11 @@ struct Matrix {
             b.V[k][k] = 1;
             for(int i=k+1; i<m; i++) {
                 double pivot = V[i][k] / V[k][k];
+                cout << pivot << endl;
                 b.V[i][k] = pivot;                
                 for(int j=k; j<n; j++)
                     V[i][j] -= pivot*V[k][j];
+                write();
             }
         }
     }
